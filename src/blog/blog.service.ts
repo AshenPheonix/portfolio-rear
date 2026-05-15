@@ -16,20 +16,20 @@ export class BlogService {
     throw new Error('Method not implemented.');
   }
 
-  findAll() {
-    return this.blogs.find();
+  async findAll() {
+    return await this.blogs.find();
   }
 
-  findOne(id: number) {
-    return this.blogs.findOne({ where: { id } });
+  async findOne(id: number) {
+    return await this.blogs.findOne({ where: { id } });
   }
 
-  update(id: number, updateBlogDto: UpdateBlogDto) {
-    throw new Error('Method not implemented.');
-    // return this.blogs.update(id, updateBlogDto);
+  async update(id: number, updateBlogDto: UpdateBlogDto) {
+    await this.blogs.update(id, updateBlogDto);
+    return this.findOne(id);
   }
 
-  remove(id: number) {
-    return this.blogs.delete(id);
+  async remove(id: number) {
+    await this.blogs.delete(id);
   }
 }
